@@ -15,9 +15,10 @@ const getMovies = asyncHandler(async (req, res) => {
 // @access Private
 const getMovie = asyncHandler(async (req, res) => {
   const movie = await Movie.findById(req.params.id);
-  res.status(200).json({
-    message: "movie with id " + req.params.id,
-  });
+  if (movie) {
+    res.status(200).json(movie);
+  }
+  res.status(404);
 });
 
 // @desc Set movie
