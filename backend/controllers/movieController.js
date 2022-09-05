@@ -26,9 +26,7 @@ const getMovie = asyncHandler(async (req, res) => {
 // @access Private
 const setMovie = asyncHandler(async (req, res) => {
   const movie = await Movie.create(req.body);
-  res.status(200).json({
-    message: "POST request to /api/movies",
-  });
+  res.status(201).json(movie);
 });
 
 // @desc Update movie
@@ -46,9 +44,7 @@ const updateMovie = asyncHandler(async (req, res) => {
     new: true,
   });
 
-  res.status(200).json({
-    message: "Updated movie with id " + req.params.id,
-  });
+  res.status(200).json(updatedMovie);
 });
 
 // @desc Delete movie
